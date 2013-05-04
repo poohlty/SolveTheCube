@@ -10,7 +10,7 @@
 
 @interface SCAlgorithmViewController : UITableViewController
 
-@property(nonatomic,retain) NSDictionary *listData;
+@property(nonatomic,retain) NSArray *algorithmList;
 
 @end
 

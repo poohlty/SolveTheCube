@@ -13,6 +13,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[UITabBar appearance] setTintColor:[UIColor blackColor]];
+    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"white-tabbar-selected.png"]];
+    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"white-tabbar.png"]];
+    
     return YES;
 }
 							

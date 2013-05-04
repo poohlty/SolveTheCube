@@ -1,23 +1,21 @@
 //
-//  SCF2LViewController.m
+//  SCMarkViewController.m
 //  SolveTheCube2
 //
-//  Created by Tianyu Liu on 2/14/13.
+//  Created by Tianyu Liu on 5/4/13.
 //  Copyright (c) 2013 Tianyu Liu. All rights reserved.
 //
 
-#import "SCAlgorithmViewController.h"
+#import "SCMarkViewController.h"
 #import "MCSwipeTableViewCell.h"
-#import "Algorithm.h"
 
-@interface SCAlgorithmViewController () <MCSwipeTableViewCellDelegate>
+@interface SCMarkViewController () <MCSwipeTableViewCellDelegate>
 
 @end
 
-@implementation SCAlgorithmViewController{
-    NSString *algorithmType;
+@implementation SCMarkViewController{
+    NSUserDefaults *standardUserDefaults;
 }
-
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,30 +29,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
-    algorithmType = self.tabBarItem.title;
-    UIImage *tabBarItemImg = [UIImage imageNamed:[NSString stringWithFormat: @"%@ Icon.png",algorithmType]];
     
-    [self.tabBarItem setFinishedSelectedImage:tabBarItemImg withFinishedUnselectedImage:tabBarItemImg];
+    NSLog(@"SS");
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadAlgorithms)
+                                                 name:@"bookmarkChanged"
+                                               object:nil];
+    
+    [self loadAlgorithms];
 
-    NSString *path = [[NSBundle mainBundle] pathForResource:algorithmType ofType:@"plist"];
-    NSArray *data =[[NSArray alloc] initWithContentsOfFile:path];
-    
-    //initilize sushi property
-    NSMutableArray *tempList = [[NSMutableArray alloc]init];
-
-    for (int i = 0; i < data.count; i++) {
-        Algorithm *newAlgorithm =
-        [[Algorithm alloc]initWithString:data[i]
-                               imageName:[NSString stringWithFormat:@"%@-%d%@",algorithmType, i+1, @".gif"]];
-        
-        [tempList addObject:newAlgorithm];
-    }
-    self.algorithmList = [[NSArray alloc]initWithArray:tempList];
-    
-    NSLog(@"%u",self.algorithmList.count);
-    NSLog(@"This is%@",algorithmType);
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -62,9 +46,19 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)loadAlgorithms{
+    standardUserDefaults = [NSUserDefaults standardUserDefaults];
+    NSArray *tempBookmark = [standardUserDefaults arrayForKey:@"bookmark"];
+    
+    self.algorithmList = tempBookmark;
+    [self.tableView reloadData];
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -83,7 +77,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"algorithmCell";
+    static NSString *CellIdentifier = @"bookmarkCell";
     
     MCSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -101,12 +95,13 @@
                  fourthIconName:nil
                     fourthColor:nil];
     
-    [cell.contentView setBackgroundColor:[UIColor whiteColor]];    
+    [cell.contentView setBackgroundColor:[UIColor whiteColor]];
     [cell setMode:MCSwipeTableViewCellModeSwitch];
     
-    cell.textLabel.text = [self.algorithmList[indexPath.row] algorithmString];
+    // Configure the cell...
+    cell.textLabel.text = self.algorithmList[indexPath.row][@"algorithmString"];
     cell.textLabel.adjustsFontSizeToFitWidth = YES;
-    cell.imageView.image = [UIImage imageNamed:[self.algorithmList[indexPath.row] imageName]];
+    cell.imageView.image = [UIImage imageNamed:self.algorithmList[indexPath.row][@"imageName"]];
     
     return cell;
 }
@@ -142,7 +137,7 @@
 */
 
 /*
- // Override to support conditional rearranging of the table view.
+// Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
@@ -154,42 +149,47 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
 }
-
-#pragma mark - MCSwipeTableViewCellDelegate
 
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode
 {
     //grab the standardUserDefault to change bookmark array
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *tempBookmark =
-    [[NSMutableArray alloc]initWithArray:[standardUserDefaults arrayForKey:@"bookmark"]];
-    
-    Algorithm *thisAlgorithm = self.algorithmList[[[self.tableView indexPathForCell:cell] row]];
-    NSDictionary *algorthmDict = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[thisAlgorithm imageName], [thisAlgorithm algorithmString], nil] forKeys:[NSArray arrayWithObjects:@"imageName",@"algorithmString",nil]];
-    
-    NSLog(@"%@",thisAlgorithm.algorithmString);
-    
-    if (![tempBookmark containsObject: algorthmDict]) {
-        //if algorithm is not bookmarked, add it to the bookmark array
-        [tempBookmark addObject:algorthmDict];
-        [standardUserDefaults setObject:tempBookmark forKey:@"bookmark"];
-        //[self showWithCustomView:@"Liked"];
-        
-    } else {
-        //if sushi is stared, remove it from the array, change the star to empty and pop notification
-        //        [tempFav removeObject:self.sushi.name];
-        //        [standardUserDefaults setObject:tempFav forKey:@"favourite"];
-        //        UIImage *starImage = [UIImage imageNamed:@"empty-star-icon"];
-        //        [self.star setImage:starImage forState:UIControlStateNormal];
-        //        [self showWithCustomView:@"Unliked"];
-
-    }
-    
-    //post a notification to FavController and CollectionViewController to update collection view
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"bookmarkChanged" object:nil];
+//    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+//    NSMutableArray *tempBookmark =
+//    [[NSMutableArray alloc]initWithArray:[standardUserDefaults arrayForKey:@"bookmark"]];
+//    
+//    Algorithm *thisAlgorithm = self.algorithmList[[[self.tableView indexPathForCell:cell] row]];
+//    
+//    NSLog(@"%@",thisAlgorithm.algorithmString);
+//    
+//    if (![tempBookmark containsObject: algorthmDict]) {
+//        //if algorithm is not bookmarked, add it to the bookmark array
+//        [tempBookmark addObject:algorthmDict];
+//        [standardUserDefaults setObject:tempBookmark forKey:@"bookmark"];
+//        //[self showWithCustomView:@"Liked"];
+//        
+//    } else {
+//        //if sushi is stared, remove it from the array, change the star to empty and pop notification
+//        //        [tempFav removeObject:self.sushi.name];
+//        //        [standardUserDefaults setObject:tempFav forKey:@"favourite"];
+//        //        UIImage *starImage = [UIImage imageNamed:@"empty-star-icon"];
+//        //        [self.star setImage:starImage forState:UIControlStateNormal];
+//        //        [self showWithCustomView:@"Unliked"];
+//        
+//    }
+//    
+//    //post a notification to FavController and CollectionViewController to update collection view
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"bookmarkChanged" object:nil];
     
     NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
 }
+
 
 @end
