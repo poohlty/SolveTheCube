@@ -1,5 +1,5 @@
 //
-//  SCSecondViewController.h
+//  SCLearnViewController.h
 //  SolveTheCube2
 //
 //  Created by Tianyu Liu on 2/14/13.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SCSecondViewController : UIViewController
+@interface SCLearnViewController : UIViewController
+
+@property IBOutlet UIWebView *docView;
 
 @end

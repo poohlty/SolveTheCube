@@ -1,5 +1,5 @@
 //
-//  SCFirstViewController.h
+//  SCF2LViewController.h
 //  SolveTheCube2
 //
 //  Created by Tianyu Liu on 2/14/13.
@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SCFirstViewController : UIViewController
+@interface SCAlgorithmViewController : UITableViewController
+
+@property(nonatomic,retain) NSDictionary *listData;
 
 @end
+

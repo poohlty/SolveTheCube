@@ -6,18 +6,25 @@
 //  Copyright (c) 2013 Tianyu Liu. All rights reserved.
 //
 
-#import "SCSecondViewController.h"
+#import "SCAboutViewController.h"
 
-@interface SCSecondViewController ()
+@interface SCAboutViewController ()
 
 @end
 
-@implementation SCSecondViewController
+@implementation SCAboutViewController
+
+@synthesize docView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"About Author.doc" ofType:nil];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [self.docView loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning

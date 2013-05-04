@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>1</key>
+	<string>R² U Fs R² Bs U R²</string>
+	<key>2</key>
+	<string>R² U&apos; Fs R² Bs U&apos; R²</string>
+	<key>3</key>
+	<string>L F&apos; L B² L&apos; F L B² L²</string>
+	<key>4</key>
+	<string>B&apos; R B&apos; L² B R&apos; B&apos; L² B²　</string>
+	<key>5</key>
+	<string>Ls Ds2 Ls D Ls2 U&apos; Bs2</string>
+	<key>6</key>
+	<string>Ra U²  Ra&apos;Fa&apos;U² Fa</string>
+	<key>7</key>
+	<string>R B L B&apos; R&apos; Fa R F&apos; L&apos; F R&apos; Fa&apos;</string>
+	<key>8</key>
+	<string>R B U&apos; B&apos; U B U B² R&apos; B U B U&apos; B&apos;</string>
+	<key>9</key>
+	<string>F&apos; U F&apos; U&apos; R&apos; D R&apos; D&apos; R² F&apos; R&apos; F R F</string>
+	<key>10</key>
+	<string>L² F&apos; L D² R&apos; B R D²L B L F L&apos; B&apos;</string>
+	<key>11</key>
+	<string>F L U L&apos; F L U&apos; F U F U&apos;F&apos;L&apos;F²</string>
+	<key>12</key>
+	<string>F&apos; R&apos; U&apos;R F &apos;R&apos; U F&apos; U&apos; F&apos; U F R F2</string>
+	<key>13</key>
+	<string>B2 L U L&apos;B² R D&apos; R D R²</string>
+	<key>14</key>
+	<string>B2 R&apos; U&apos; R B2 L&apos; D L&apos; D&apos; L2</string>
+	<key>15</key>
+	<string>R B U&apos; B&apos; R D B&apos; L&apos; B&apos; L B² D&apos; R²</string>
+	<key>16</key>
+	<string>F U F&apos; L² D&apos; B U&apos; B&apos; U B&apos; D L²</string>
+	<key>17</key>
+	<string>F&apos; U&apos; F R2 D B&apos; U B U&apos; B D&apos; R2</string>
+	<key>18</key>
+	<string>L2 D&apos; B U&apos; B U B&apos; D L2 F U&apos; F&apos;</string>
+	<key>19</key>
+	<string>R2 D B&apos; U B&apos; U&apos; B D&apos; R2 F&apos; U F</string>
+	<key>20</key>
+	<string>L&apos; U R&apos; U² L U&apos; Rs U R&apos;U² L U&apos; R U</string>
+	<key>21</key>
+	<string>R U&apos; L U2 R&apos; U Rs U&apos; L U2 R&apos; U L&apos; U&apos;</string>
+</dict>
+</plist>
