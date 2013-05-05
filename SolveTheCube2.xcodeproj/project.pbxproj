@@ -364,15 +364,7 @@
 		AB723CDF16CCB6700077F7F5 = {
 			isa = PBXGroup;
 			children = (
-				AB2C164E173708BC00EAE717 /* placeholder.png */,
-				AB2C164C1736FFF200EAE717 /* brown-bar@2x.png */,
-				AB88BB7E1736C7AC008FC823 /* brown-bookmark@2x.png */,
-				AB88BB7817361845008FC823 /* Learn-icon-gray.png */,
-				AB88BB7917361845008FC823 /* Learn-icon-gray@2x.png */,
-				AB88BB6E1736155D008FC823 /* Learn-icon@2x.png */,
-				AB88BB6F1736155D008FC823 /* Learn-icon.png */,
 				AB88BB691736033D008FC823 /* MBProgressHUD */,
-				AB88BB311735AA77008FC823 /* bookmark.png */,
 				AB88BACC1734C216008FC823 /* Images */,
 				AB88BACB1734C139008FC823 /* MCSwipeTableViewCell */,
 				AB76A6D616FE70790065622C /* Untitled.png */,
@@ -501,6 +493,14 @@
 		ABA6699E16CD7BED00F2ABE6 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				AB2C164E173708BC00EAE717 /* placeholder.png */,
+				AB2C164C1736FFF200EAE717 /* brown-bar@2x.png */,
+				AB88BB311735AA77008FC823 /* bookmark.png */,
+				AB88BB7E1736C7AC008FC823 /* brown-bookmark@2x.png */,
+				AB88BB7817361845008FC823 /* Learn-icon-gray.png */,
+				AB88BB7917361845008FC823 /* Learn-icon-gray@2x.png */,
+				AB88BB6E1736155D008FC823 /* Learn-icon@2x.png */,
+				AB88BB6F1736155D008FC823 /* Learn-icon.png */,
 				AB88BB331735B305008FC823 /* Bookmark-icon.png */,
 				AB88BB341735B305008FC823 /* Bookmark-icon@2x.png */,
 				AB88BB351735B305008FC823 /* F2L-icon-gray.png */,

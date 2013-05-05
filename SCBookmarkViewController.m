@@ -42,7 +42,7 @@
     placeholderImage = [[UIImageView alloc] init];
     placeholderImage.frame = CGRectMake(0, 0, 320, 568);
     placeholderImage.image = [UIImage imageNamed:@"placeholder"];
-    placeholderImage.alpha = 0.7;
+    placeholderImage.alpha = 0.75;
     
     [self.view addSubview:placeholderImage];
     
@@ -67,12 +67,6 @@
     
     placeholderImage.hidden = (rowCount != 0);
     [self.tableView reloadData];
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-    NSLog(@"called");
-    NSArray *subviews = [self.view subviews];
-    NSLog(@"%@",subviews);
 }
 
 
@@ -201,7 +195,13 @@
     
     [self showWithCustomView:@"Remembered"];
     
-    placeholderImage.hidden = (rowCount != 0);
+    if (rowCount == 0) {
+        placeholderImage.alpha = 0;
+        placeholderImage.hidden = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            placeholderImage.alpha = 0.75;
+        }];
+    }
     
     NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
 }
