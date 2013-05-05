@@ -24,7 +24,7 @@
     return self;
 }
 
-- (NSDictionary *) convertToDictionary:(Algorithm *)anAlgorithm{
++ (NSDictionary *) convertToDictionary:(Algorithm *)anAlgorithm{
     NSDictionary *algorthmDict = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[anAlgorithm imageName], [anAlgorithm algorithmString], nil] forKeys:[NSArray arrayWithObjects:@"imageName",@"algorithmString",nil]];
     return algorthmDict;
 }

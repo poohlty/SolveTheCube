@@ -6,15 +6,17 @@
 //  Copyright (c) 2013 Tianyu Liu. All rights reserved.
 //
 
-#import "SCMarkViewController.h"
+#import "SCBookmarkViewController.h"
 #import "MCSwipeTableViewCell.h"
+#import "MBProgressHUD.h"
 
-@interface SCMarkViewController () <MCSwipeTableViewCellDelegate>
+@interface SCBookmarkViewController () <MCSwipeTableViewCellDelegate,MBProgressHUDDelegate>
 
 @end
 
-@implementation SCMarkViewController{
+@implementation SCBookmarkViewController{
     NSUserDefaults *standardUserDefaults;
+    NSInteger rowCount;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -30,14 +32,16 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"SS");
+    self.view.backgroundColor = [UIColor colorWithRed:233.0 / 255.0 green:234.0 / 255.0 blue:236.0 / 255.0 alpha:1.0];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loadAlgorithms)
-                                                 name:@"bookmarkChanged"
+                                                 name:@"bookmarkAdded"
                                                object:nil];
-    
     [self loadAlgorithms];
+
+    UIImage *tabBarItemImg = [UIImage imageNamed:[NSString stringWithFormat: @"Bookmark-icon.png"]];
+    [self.tabBarItem setFinishedSelectedImage:tabBarItemImg withFinishedUnselectedImage:tabBarItemImg];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -51,6 +55,7 @@
     NSArray *tempBookmark = [standardUserDefaults arrayForKey:@"bookmark"];
     
     self.algorithmList = tempBookmark;
+    rowCount = self.algorithmList.count;
     [self.tableView reloadData];
 }
 
@@ -72,7 +77,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.algorithmList.count;
+    return rowCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -87,18 +92,20 @@
     
     [cell setDelegate:self];
     [cell setFirstStateIconName:@"check.png"
-                     firstColor:[UIColor colorWithRed:206.0 / 255.0 green:149.0 / 255.0 blue:98.0 / 255.0 alpha:1.0]
+                     firstColor:[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]
             secondStateIconName:nil
                     secondColor:nil
-                  thirdIconName:@"cross.png"
-                     thirdColor:[UIColor colorWithRed:206.0 / 255.0 green:149.0 / 255.0 blue:98.0 / 255.0 alpha:1.0]
+                  thirdIconName:@"check.png"
+                     thirdColor:[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]
                  fourthIconName:nil
                     fourthColor:nil];
     
-    [cell.contentView setBackgroundColor:[UIColor whiteColor]];
-    [cell setMode:MCSwipeTableViewCellModeSwitch];
+    [cell.contentView setBackgroundColor:[UIColor lightGrayColor]];
+    [cell setMode:MCSwipeTableViewCellModeExit];
     
-    // Configure the cell...
+    [cell.contentView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-bar"]]];
+
+    cell.textLabel.backgroundColor = [UIColor colorWithRed:233.0 / 255.0 green:234.0 / 255.0 blue:236.0 / 255.0 alpha:1.0];
     cell.textLabel.text = self.algorithmList[indexPath.row][@"algorithmString"];
     cell.textLabel.adjustsFontSizeToFitWidth = YES;
     cell.imageView.image = [UIImage imageNamed:self.algorithmList[indexPath.row][@"imageName"]];
@@ -161,34 +168,38 @@
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode
 {
     //grab the standardUserDefault to change bookmark array
-//    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-//    NSMutableArray *tempBookmark =
-//    [[NSMutableArray alloc]initWithArray:[standardUserDefaults arrayForKey:@"bookmark"]];
-//    
-//    Algorithm *thisAlgorithm = self.algorithmList[[[self.tableView indexPathForCell:cell] row]];
-//    
-//    NSLog(@"%@",thisAlgorithm.algorithmString);
-//    
-//    if (![tempBookmark containsObject: algorthmDict]) {
-//        //if algorithm is not bookmarked, add it to the bookmark array
-//        [tempBookmark addObject:algorthmDict];
-//        [standardUserDefaults setObject:tempBookmark forKey:@"bookmark"];
-//        //[self showWithCustomView:@"Liked"];
-//        
-//    } else {
-//        //if sushi is stared, remove it from the array, change the star to empty and pop notification
-//        //        [tempFav removeObject:self.sushi.name];
-//        //        [standardUserDefaults setObject:tempFav forKey:@"favourite"];
-//        //        UIImage *starImage = [UIImage imageNamed:@"empty-star-icon"];
-//        //        [self.star setImage:starImage forState:UIControlStateNormal];
-//        //        [self showWithCustomView:@"Unliked"];
-//        
-//    }
-//    
-//    //post a notification to FavController and CollectionViewController to update collection view
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"bookmarkChanged" object:nil];
+    NSMutableArray *tempBookmark =
+    [[NSMutableArray alloc]initWithArray:[standardUserDefaults arrayForKey:@"bookmark"]];
+    NSDictionary *thisAlgorithm = self.algorithmList[[[self.tableView indexPathForCell:cell] row]];
+    
+    NSLog(@"%@",thisAlgorithm[@"algorithmString"]);
+    
+    [tempBookmark removeObject:thisAlgorithm];
+    [standardUserDefaults setObject:tempBookmark forKey:@"bookmark"];
+    
+    rowCount--;
+    [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
+    //post a notification to FavController and CollectionViewController to update collection view
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"bookmarkDeleted" object:nil];
+    
+    [self showWithCustomView:@"Remembered"];
     
     NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
+}
+
+- (void)showWithCustomView:(NSString *)message {
+	
+	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.tabBarController.view];
+	[self.tabBarController.view addSubview:HUD];
+	
+	HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check.png"]];
+	
+	// Set custom view mode
+	HUD.mode = MBProgressHUDModeCustomView;
+	HUD.delegate = self;
+	HUD.labelText = message;
+	[HUD show:YES];
+	[HUD hide:YES afterDelay:0.6];
 }
 
 

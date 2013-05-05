@@ -15,7 +15,7 @@
 
 - (id) initWithString:(NSString *)aString imageName:(NSString *)aImageName;
 
-- (NSDictionary *) convertToDictionary:(Algorithm *)anAlgorithm;
++ (NSDictionary *) convertToDictionary:(Algorithm *)anAlgorithm;
 
 
 @end

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SCMarkViewController : UITableViewController
+@interface SCBookmarkViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray *algorithmList;
+
+
 
 @end

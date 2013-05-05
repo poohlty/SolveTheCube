@@ -14,12 +14,26 @@
 {
     // Override point for customization after application launch.
     [[UITabBar appearance] setTintColor:[UIColor blackColor]];
+    [[UITabBar appearance] setSelectedImageTintColor:[UIColor darkGrayColor]];
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"white-tabbar-selected.png"]];
-    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"white-tabbar.png"]];
+    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"white-tabbar-background.png"]];
+    [[UITabBarItem appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor colorWithRed:71.0 / 255.0 green:71.0 / 255.0 blue:71.0 / 255.0 alpha:1.0], UITextAttributeTextColor,
+      [UIColor whiteColor], UITextAttributeTextShadowColor,
+      [NSValue valueWithUIOffset:UIOffsetMake(0, 0.4)], UITextAttributeTextShadowOffset,
+      [UIFont fontWithName:@"Rok" size:0.0], UITextAttributeFont,
+      nil]forState:UIControlStateNormal];
     
+    //crazy code. Programmatically trigger viewDidLoad, a very crazy design
+    UITabBarController *root = (UITabBarController *) self.window.rootViewController;
+    for (UIViewController *controller in root.viewControllers){
+        [controller viewDidLoad];
+    }
+
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
