@@ -17,6 +17,7 @@
 @implementation SCBookmarkViewController{
     NSUserDefaults *standardUserDefaults;
     NSInteger rowCount;
+    UIImageView *placeholderImage;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -38,6 +39,13 @@
                                              selector:@selector(loadAlgorithms)
                                                  name:@"bookmarkAdded"
                                                object:nil];
+    placeholderImage = [[UIImageView alloc] init];
+    placeholderImage.frame = CGRectMake(0, 0, 320, 568);
+    placeholderImage.image = [UIImage imageNamed:@"placeholder"];
+    placeholderImage.alpha = 0.7;
+    
+    [self.view addSubview:placeholderImage];
+    
     [self loadAlgorithms];
 
     UIImage *tabBarItemImg = [UIImage imageNamed:[NSString stringWithFormat: @"Bookmark-icon.png"]];
@@ -56,7 +64,15 @@
     
     self.algorithmList = tempBookmark;
     rowCount = self.algorithmList.count;
+    
+    placeholderImage.hidden = (rowCount != 0);
     [self.tableView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    NSLog(@"called");
+    NSArray *subviews = [self.view subviews];
+    NSLog(@"%@",subviews);
 }
 
 
@@ -179,10 +195,13 @@
     
     rowCount--;
     [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
+    
     //post a notification to FavController and CollectionViewController to update collection view
     [[NSNotificationCenter defaultCenter] postNotificationName:@"bookmarkDeleted" object:nil];
     
     [self showWithCustomView:@"Remembered"];
+    
+    placeholderImage.hidden = (rowCount != 0);
     
     NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
 }

@@ -26,8 +26,13 @@
       nil]forState:UIControlStateNormal];
     
     //crazy code. Programmatically trigger viewDidLoad, a very crazy design
+    //This create a super super subtle bug in BookMark Controller:
+    //we call viewDidLoad twice, and two placeholder images were added to the main
+    //view. Thus we can't move away an instance of the placeholder image because we
+    //can't have access to it.
     UITabBarController *root = (UITabBarController *) self.window.rootViewController;
-    for (UIViewController *controller in root.viewControllers){
+    for (int i = 1; i < 5; i++){
+        UIViewController *controller = root.viewControllers[i];
         [controller viewDidLoad];
     }
 
