@@ -20,6 +20,7 @@
     NSUserDefaults *standardUserDefaults;
 }
 
+//What does it do?
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -33,7 +34,6 @@
 - (void)loadAlgorithms{
     standardUserDefaults = [NSUserDefaults standardUserDefaults];
     [self.tableView reloadData];
-    NSLog(@"Clas");
 }
 
 - (void)viewDidLoad
@@ -46,13 +46,10 @@
         
     algorithmType = self.tabBarItem.title;
     
-    UIImage *tabBarItemImg = [UIImage imageNamed:[NSString stringWithFormat: @"%@-icon-gray.png",algorithmType]];
-    [self.tabBarItem setFinishedSelectedImage:tabBarItemImg withFinishedUnselectedImage:tabBarItemImg];
-
     NSString *path = [[NSBundle mainBundle] pathForResource:algorithmType ofType:@"plist"];
     NSArray *data =[[NSArray alloc] initWithContentsOfFile:path];
     
-    //initilize sushi property
+    //initilize algorithm property
     NSMutableArray *tempList = [[NSMutableArray alloc]init];
 
     for (int i = 0; i < data.count; i++) {
@@ -110,18 +107,54 @@
         cell = [[MCSwipeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    [cell setDelegate:self];
-    [cell setFirstStateIconName:@"bookmark.png"
-                     firstColor:[UIColor colorWithRed:206.0 / 255.0 green:149.0 / 255.0 blue:98.0 / 255.0 alpha:1.0]
-            secondStateIconName:nil
-                    secondColor:nil
-                  thirdIconName:@"bookmark.png"
-                     thirdColor:[UIColor colorWithRed:206.0 / 255.0 green:149.0 / 255.0 blue:98.0 / 255.0 alpha:1.0]
-                 fourthIconName:nil
-                    fourthColor:nil];
-    [cell setMode:MCSwipeTableViewCellModeSwitch];
+    void (^testBlock)(MCSwipeTableViewCell*, MCSwipeTableViewCellState,MCSwipeTableViewCellMode ) =
+    ^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+        //grab the standardUserDefault to change bookmark array
+        standardUserDefaults = [NSUserDefaults standardUserDefaults];
+        NSMutableArray *tempBookmark =
+        [[NSMutableArray alloc]initWithArray:[standardUserDefaults arrayForKey:@"bookmark"]];
+        
+        Algorithm *thisAlgorithm = self.algorithmList[[[self.tableView indexPathForCell:cell] row]];
+        NSDictionary *algorthmDict = [Algorithm convertToDictionary:thisAlgorithm];
+        
+        NSLog(@"%@",thisAlgorithm.algorithmString);
+        
+        UIImageView *bookmarkview = [[UIImageView alloc]initWithFrame:CGRectMake(280,0, 20, 20)];
+        bookmarkview.image=[UIImage imageNamed:@"brown-bookmark"];
+        
+        if (![tempBookmark containsObject: algorthmDict]) {
+            //if algorithm is not bookmarked, add it to the bookmark array
+            [tempBookmark addObject:algorthmDict];
+            [standardUserDefaults setObject:tempBookmark forKey:@"bookmark"];
+            [self showWithCustomView:@"Bookmarked"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"bookmarkAdded" object:nil];
+            cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-bar"]];
+            //[self showWithCustomView:@"Liked"];
+            
+        } else {
+            [self showWithCustomView:@"Already bookmarked"];
+        }
+        
+        NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
+    };
     
-    [cell.contentView setBackgroundColor:[UIColor colorWithRed:233.0 / 255.0 green:234.0 / 255.0 blue:236.0 / 255.0 alpha:1.0]];
+    UIImage *image = [UIImage imageNamed:@"bookmark.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    UIColor *brownColor = [UIColor colorWithRed:206.0 / 255.0 green:149.0 / 255.0 blue:98.0 / 255.0 alpha:1.0];
+    
+    // Setting the default inactive state color to the tableView background color.
+    [cell setDefaultColor:[UIColor colorWithRed:233.0 / 255.0 green:234.0 / 255.0 blue:236.0 / 255.0 alpha:1.0]];
+    
+    // Adding gestures per state basis.
+    [cell setSwipeGestureWithView:(UIView*)imageView color:brownColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState1 completionBlock:testBlock];
+    
+    [cell setSwipeGestureWithView:(UIView*)imageView color:brownColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock:testBlock];
+    
+    cell.modeForState1 = MCSwipeTableViewCellModeSwitch;
+    cell.modeForState3 = MCSwipeTableViewCellModeSwitch;
+    
+    
+    
     cell.textLabel.backgroundColor = [UIColor colorWithRed:233.0 / 255.0 green:234.0 / 255.0 blue:236.0 / 255.0 alpha:1.0];
     cell.textLabel.text = [self.algorithmList[indexPath.row] algorithmString];
     
@@ -133,9 +166,8 @@
     
     if ([self algoorithmBookmarked:self.algorithmList[indexPath.row]]) {
         cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-bar"]];
-        NSLog(@"BOOKMARED");
     } else {
-        NSLog(@"NOT");
+        cell.contentView.backgroundColor = [UIColor colorWithRed:233.0 / 255.0 green:234.0 / 255.0 blue:236.0 / 255.0 alpha:1.0];
     }
     
     return cell;
@@ -194,48 +226,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-}
-
-#pragma mark - MCSwipeTableViewCellDelegate
-
-- (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode
-{
-    //grab the standardUserDefault to change bookmark array
-    standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *tempBookmark =
-    [[NSMutableArray alloc]initWithArray:[standardUserDefaults arrayForKey:@"bookmark"]];
-    
-    Algorithm *thisAlgorithm = self.algorithmList[[[self.tableView indexPathForCell:cell] row]];
-    NSDictionary *algorthmDict = [Algorithm convertToDictionary:thisAlgorithm];
-    
-    NSLog(@"%@",thisAlgorithm.algorithmString);
-    
-    UIImageView *bookmarkview = [[UIImageView alloc]initWithFrame:CGRectMake(280,0, 20, 20)];
-    bookmarkview.image=[UIImage imageNamed:@"brown-bookmark"];
-
-    if (![tempBookmark containsObject: algorthmDict]) {
-        //if algorithm is not bookmarked, add it to the bookmark array
-        [tempBookmark addObject:algorthmDict];
-        [standardUserDefaults setObject:tempBookmark forKey:@"bookmark"];
-        [self showWithCustomView:@"Bookmarked"];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"bookmarkAdded" object:nil];
-        cell.contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-bar"]];
-        //[self showWithCustomView:@"Liked"];
-        
-    } else {
-        
-        [self showWithCustomView:@"Already bookmarked"];
-        //if sushi is stared, remove it from the array, change the star to empty and pop notification
-        //        [tempFav removeObject:self.sushi.name];
-        //        [standardUserDefaults setObject:tempFav forKey:@"favourite"];
-        //        UIImage *starImage = [UIImage imageNamed:@"empty-star-icon"];
-        //        [self.star setImage:starImage forState:UIControlStateNormal];
-        //        [self showWithCustomView:@"Unliked"];
-
-    }
-    
-    //post a notification to FavController and CollectionViewController to update collection view
-    NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
 }
 
 //pop up a notification of bookmark

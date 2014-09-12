@@ -20,6 +20,7 @@
     UIImageView *placeholderImage;
 }
 
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -39,17 +40,15 @@
                                              selector:@selector(loadAlgorithms)
                                                  name:@"bookmarkAdded"
                                                object:nil];
+    
     placeholderImage = [[UIImageView alloc] init];
-    placeholderImage.frame = CGRectMake(0, 0, 320, 568);
+    placeholderImage.frame = CGRectMake(0, -50, 320, 568);
     placeholderImage.image = [UIImage imageNamed:@"placeholder"];
     placeholderImage.alpha = 0.75;
     
     [self.view addSubview:placeholderImage];
     
     [self loadAlgorithms];
-
-    UIImage *tabBarItemImg = [UIImage imageNamed:[NSString stringWithFormat: @"Bookmark-icon.png"]];
-    [self.tabBarItem setFinishedSelectedImage:tabBarItemImg withFinishedUnselectedImage:tabBarItemImg];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -65,7 +64,17 @@
     self.algorithmList = tempBookmark;
     rowCount = self.algorithmList.count;
     
-    placeholderImage.hidden = (rowCount != 0);
+    if (rowCount == 0){
+        [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        self.tableView.scrollEnabled = NO;
+        placeholderImage.hidden = NO;
+    } else {
+        [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+        self.tableView.scrollEnabled = YES;
+        placeholderImage.hidden = YES;
+    }
+
+    
     [self.tableView reloadData];
 }
 
@@ -101,17 +110,58 @@
     }
     
     [cell setDelegate:self];
-    [cell setFirstStateIconName:@"check.png"
-                     firstColor:[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]
-            secondStateIconName:nil
-                    secondColor:nil
-                  thirdIconName:@"check.png"
-                     thirdColor:[UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0]
-                 fourthIconName:nil
-                    fourthColor:nil];
+    
+    
+    void (^testBlock)(MCSwipeTableViewCell*, MCSwipeTableViewCellState,MCSwipeTableViewCellMode ) =
+    ^(MCSwipeTableViewCell *cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode) {
+        //grab the standardUserDefault to change bookmark array
+        NSMutableArray *tempBookmark =
+        [[NSMutableArray alloc]initWithArray:[standardUserDefaults arrayForKey:@"bookmark"]];
+        NSDictionary *thisAlgorithm = self.algorithmList[[[self.tableView indexPathForCell:cell] row]];
+        
+        NSLog(@"%@",thisAlgorithm[@"algorithmString"]);
+        
+        [tempBookmark removeObject:thisAlgorithm];
+        [standardUserDefaults setObject:tempBookmark forKey:@"bookmark"];
+        
+        rowCount--;
+        [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
+        
+        //post a notification to FavController and CollectionViewController to update collection view
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"bookmarkDeleted" object:nil];
+        
+        [self showWithCustomView:@"Remembered"];
+        
+        if (rowCount == 0) {
+            [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+            placeholderImage.alpha = 0;
+            placeholderImage.hidden = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                placeholderImage.alpha = 0.75;
+                self.tableView.scrollEnabled = NO;
+            }];
+        }
+        
+        NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
+    };
+
+    
+    UIImage *image = [UIImage imageNamed:@"check.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    UIColor *greenColor = [UIColor colorWithRed:85.0 / 255.0 green:213.0 / 255.0 blue:80.0 / 255.0 alpha:1.0];
+    
+    // Setting the default inactive state color to the tableView background color.
+    [cell setDefaultColor:[UIColor colorWithRed:233.0 / 255.0 green:234.0 / 255.0 blue:236.0 / 255.0 alpha:1.0]];
+    
+    // Adding gestures per state basis.
+    [cell setSwipeGestureWithView:imageView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState1 completionBlock: testBlock];
+    
+    [cell setSwipeGestureWithView:imageView color:greenColor mode:MCSwipeTableViewCellModeSwitch state:MCSwipeTableViewCellState3 completionBlock: testBlock];
+    
+    cell.modeForState1 = MCSwipeTableViewCellModeExit;
+    cell.modeForState3 = MCSwipeTableViewCellModeExit;
     
     [cell.contentView setBackgroundColor:[UIColor lightGrayColor]];
-    [cell setMode:MCSwipeTableViewCellModeExit];
     
     [cell.contentView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"brown-bar"]]];
 
@@ -173,37 +223,6 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-}
-
-- (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didTriggerState:(MCSwipeTableViewCellState)state withMode:(MCSwipeTableViewCellMode)mode
-{
-    //grab the standardUserDefault to change bookmark array
-    NSMutableArray *tempBookmark =
-    [[NSMutableArray alloc]initWithArray:[standardUserDefaults arrayForKey:@"bookmark"]];
-    NSDictionary *thisAlgorithm = self.algorithmList[[[self.tableView indexPathForCell:cell] row]];
-    
-    NSLog(@"%@",thisAlgorithm[@"algorithmString"]);
-    
-    [tempBookmark removeObject:thisAlgorithm];
-    [standardUserDefaults setObject:tempBookmark forKey:@"bookmark"];
-    
-    rowCount--;
-    [self.tableView deleteRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]] withRowAnimation:UITableViewRowAnimationFade];
-    
-    //post a notification to FavController and CollectionViewController to update collection view
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"bookmarkDeleted" object:nil];
-    
-    [self showWithCustomView:@"Remembered"];
-    
-    if (rowCount == 0) {
-        placeholderImage.alpha = 0;
-        placeholderImage.hidden = NO;
-        [UIView animateWithDuration:0.3 animations:^{
-            placeholderImage.alpha = 0.75;
-        }];
-    }
-    
-    NSLog(@"IndexPath : %@ - MCSwipeTableViewCellState : %d - MCSwipeTableViewCellMode : %d", [self.tableView indexPathForCell:cell], state, mode);
 }
 
 - (void)showWithCustomView:(NSString *)message {

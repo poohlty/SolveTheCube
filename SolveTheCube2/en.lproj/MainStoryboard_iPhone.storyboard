@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1280" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Learn View Controller - First-->
@@ -9,47 +10,41 @@
             <objects>
                 <viewController title="First" id="2" customClass="SCLearnViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="16">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hX5-43-zjR">
+                            <webView contentMode="scaleToFill" id="hX5-43-zjR">
+                                <rect key="frame" x="0.0" y="-24.5" width="320" height="568"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="hX5-43-zjR" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="Ug0-df-yJN"/>
-                            <constraint firstItem="hX5-43-zjR" firstAttribute="top" secondItem="16" secondAttribute="top" type="default" id="dVJ-Nh-IGx"/>
-                            <constraint firstItem="hX5-43-zjR" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="rrj-Yw-4KS"/>
-                            <constraint firstItem="hX5-43-zjR" firstAttribute="bottom" secondItem="16" secondAttribute="bottom" type="default" id="wQT-Rn-MnQ"/>
-                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Learn" id="7"/>
+                    <tabBarItem key="tabBarItem" title="Learn" image="Learn-icon-gray.png" id="7"/>
                     <connections>
                         <outlet property="docView" destination="hX5-43-zjR" id="ONM-Sf-99X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="755" y="253"/>
+            <point key="canvasLocation" x="-167" y="983"/>
         </scene>
         <!--Algorithm View Controller - F2L-->
         <scene sceneID="MZk-iC-yyp">
             <objects>
                 <tableViewController id="dbj-TP-d19" customClass="SCAlgorithmViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="0Ge-db-AL1">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="0Ge-db-AL1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="algorithmCell" rowHeight="80" id="uId-LY-vQM" customClass="MCSwipeTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uId-LY-vQM" id="gdJ-xg-HgA">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                                </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
@@ -58,29 +53,28 @@
                             <outlet property="delegate" destination="dbj-TP-d19" id="gMI-mL-qTD"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="F2L" image="F2L-icon.png" id="wxl-0b-Uzb"/>
+                    <tabBarItem key="tabBarItem" title="F2L" image="F2L-icon-gray.png" id="wxl-0b-Uzb"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VPv-on-a6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="345" y="-406"/>
+            <point key="canvasLocation" x="799" y="174"/>
         </scene>
-        <!--Bookmark View Controller - Bookmark-->
+        <!--Bookmark View Controller-->
         <scene sceneID="W77-T6-Apt">
             <objects>
                 <tableViewController id="C36-mG-EaG" customClass="SCBookmarkViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="WWW-8H-TE2">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="WWW-8H-TE2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bookmarkCell" rowHeight="80" id="Zn8-5Y-bS2" customClass="MCSwipeTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zn8-5Y-bS2" id="P7X-E6-1Ze">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -88,29 +82,28 @@
                             <outlet property="delegate" destination="C36-mG-EaG" id="GZ6-c8-hgB"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Bookmark" image="Bookmark-icon.png" id="MCN-Mt-MLK"/>
+                    <navigationItem key="navigationItem" id="jdF-tg-Mdm"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkB-Vx-tZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-219" y="-416"/>
+            <point key="canvasLocation" x="359" y="-406"/>
         </scene>
         <!--Algorithm View Controller - PLL-->
         <scene sceneID="nLx-Tz-VwY">
             <objects>
                 <tableViewController id="7gn-vj-VRP" customClass="SCAlgorithmViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="NGX-k7-BUG">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="NGX-k7-BUG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="algorithmCell" rowHeight="80" id="fGX-SZ-ZUE" customClass="MCSwipeTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fGX-SZ-ZUE" id="Vei-Sd-L4r">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -118,29 +111,28 @@
                             <outlet property="delegate" destination="7gn-vj-VRP" id="0Ii-y7-Fiy"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="PLL" image="PLL-icon.png" id="v7b-ZZ-jCG"/>
+                    <tabBarItem key="tabBarItem" title="PLL" image="PLL-icon-gray.png" id="v7b-ZZ-jCG"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oBz-l6-gdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="345" y="913"/>
+            <point key="canvasLocation" x="799" y="1599"/>
         </scene>
         <!--Algorithm View Controller - OLL-->
         <scene sceneID="I30-lR-RNC">
             <objects>
                 <tableViewController id="A28-PO-72H" customClass="SCAlgorithmViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="60Z-LT-UeZ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="60Z-LT-UeZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="algorithmCell" rowHeight="80" id="Kbw-Qs-WIF" customClass="MCSwipeTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kbw-Qs-WIF" id="XAD-tp-4mx">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                                </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
@@ -149,24 +141,25 @@
                             <outlet property="delegate" destination="A28-PO-72H" id="uhB-rB-Hmo"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="OLL" id="Hye-Lz-Ptt"/>
+                    <tabBarItem key="tabBarItem" title="OLL" image="OLL-icon-gray.png" id="Hye-Lz-Ptt"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Dv-gh-3eg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="345" y="253"/>
+            <point key="canvasLocation" x="799" y="889"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
             <objects>
                 <tabBarController id="4" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="5">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="C36-mG-EaG" kind="relationship" relationship="viewControllers" id="5Bi-Dd-I4X"/>
+                        <segue destination="nIf-Sc-gqC" kind="relationship" relationship="viewControllers" id="5Bi-Dd-I4X"/>
                         <segue destination="dbj-TP-d19" kind="relationship" relationship="viewControllers" id="Y8A-qC-ucO"/>
                         <segue destination="A28-PO-72H" kind="relationship" relationship="viewControllers" id="zRe-1c-Q8d"/>
                         <segue destination="7gn-vj-VRP" kind="relationship" relationship="viewControllers" id="e6t-gU-Ni8"/>
@@ -175,34 +168,35 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-167" y="329"/>
+            <point key="canvasLocation" x="-167" y="273"/>
+        </scene>
+        <!--Navigation Controller - Bookmark-->
+        <scene sceneID="1zh-mq-rZk">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aXh-ab-2bq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="nIf-Sc-gqC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Bookmark" image="Bookmark-icon-gray.png" id="MCN-Mt-MLK"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0T3-2D-nXa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="C36-mG-EaG" kind="relationship" relationship="rootViewController" id="IUA-g6-Sck"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-167" y="-406"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Bookmark-icon.png" width="27" height="27"/>
-        <image name="F2L-icon.png" width="16" height="16"/>
-        <image name="PLL-icon.png" width="16" height="16"/>
+        <image name="Bookmark-icon-gray.png" width="27" height="27"/>
+        <image name="F2L-icon-gray.png" width="27" height="27"/>
+        <image name="Learn-icon-gray.png" width="27" height="27"/>
+        <image name="OLL-icon-gray.png" width="27" height="27"/>
+        <image name="PLL-icon-gray.png" width="27" height="27"/>
     </resources>
-    <classes>
-        <class className="MCSwipeTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MCSwipeTableViewCell.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SCAlgorithmViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SCAlgorithmViewController.h"/>
-        </class>
-        <class className="SCBookmarkViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SCBookmarkViewController.h"/>
-        </class>
-        <class className="SCLearnViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SCLearnViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="docView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -7,6 +7,7 @@
 //
 
 #import "SCAppDelegate.h"
+#import "SCLearnViewController.h"
 
 @implementation SCAppDelegate
 
@@ -25,15 +26,22 @@
       [UIFont fontWithName:@"Rok" size:0.0], UITextAttributeFont,
       nil]forState:UIControlStateNormal];
     
-    //crazy code. Programmatically trigger viewDidLoad, a very crazy design
-    //This create a super super subtle bug in BookMark Controller:
-    //we call viewDidLoad twice, and two placeholder images were added to the main
-    //view. Thus we can't move away an instance of the placeholder image because we
-    //can't have access to it.
+    // crazy code. Programmatically trigger viewDidLoad, a very crazy design
+    // This create a super super subtle bug in BookMark Controller:
+    // we call viewDidLoad twice, and two placeholder images were added to the main
+    // view. Thus we can't move away an instance of the placeholder image because we
+    // can't have access to it.
+    // Probably the previous buggy bookmark array is also caused by this. We actually
+    // have duplicating tableview.
+    
+    // The code is fixed by using a category. Now it's much safer and clearer
+    
     UITabBarController *root = (UITabBarController *) self.window.rootViewController;
-    for (int i = 1; i < 5; i++){
-        UIViewController *controller = root.viewControllers[i];
-        [controller viewDidLoad];
+    for (UIViewController *controller in root.viewControllers) {
+        [controller setGrayTabBarItem];
+        if ([controller isKindOfClass:[SCLearnViewController class]]){
+            [(SCLearnViewController *)controller loadTutorial];
+        }
     }
 
     return YES;

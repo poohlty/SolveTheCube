@@ -10,6 +10,8 @@
 
 @interface SCLearnViewController : UIViewController
 
+- (void)loadTutorial;
+
 @property IBOutlet UIWebView *docView;
 
 @end
