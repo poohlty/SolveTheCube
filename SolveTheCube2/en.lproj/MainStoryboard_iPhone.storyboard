@@ -20,7 +20,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Learn" image="Learn-icon-gray.png" id="7"/>
+                    <tabBarItem key="tabBarItem" title="Learn" image="Learn-icon-gray" id="7"/>
                     <connections>
                         <outlet property="docView" destination="hX5-43-zjR" id="ONM-Sf-99X"/>
                     </connections>
@@ -53,7 +53,7 @@
                             <outlet property="delegate" destination="dbj-TP-d19" id="gMI-mL-qTD"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="F2L" image="F2L-icon-gray.png" id="wxl-0b-Uzb"/>
+                    <tabBarItem key="tabBarItem" title="F2L" image="F2L-icon-gray" id="wxl-0b-Uzb"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VPv-on-a6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -111,7 +111,7 @@
                             <outlet property="delegate" destination="7gn-vj-VRP" id="0Ii-y7-Fiy"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="PLL" image="PLL-icon-gray.png" id="v7b-ZZ-jCG"/>
+                    <tabBarItem key="tabBarItem" title="PLL" image="PLL-icon-gray" id="v7b-ZZ-jCG"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oBz-l6-gdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,7 +141,7 @@
                             <outlet property="delegate" destination="A28-PO-72H" id="uhB-rB-Hmo"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="OLL" image="OLL-icon-gray.png" id="Hye-Lz-Ptt"/>
+                    <tabBarItem key="tabBarItem" title="OLL" image="OLL-icon-gray" id="Hye-Lz-Ptt"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Dv-gh-3eg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -174,7 +174,7 @@
         <scene sceneID="1zh-mq-rZk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="nIf-Sc-gqC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Bookmark" image="Bookmark-icon-gray.png" id="MCN-Mt-MLK"/>
+                    <tabBarItem key="tabBarItem" title="Bookmark" image="Bookmark-icon-gray" id="MCN-Mt-MLK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0T3-2D-nXa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -191,11 +191,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Bookmark-icon-gray.png" width="27" height="27"/>
-        <image name="F2L-icon-gray.png" width="27" height="27"/>
-        <image name="Learn-icon-gray.png" width="27" height="27"/>
-        <image name="OLL-icon-gray.png" width="27" height="27"/>
-        <image name="PLL-icon-gray.png" width="27" height="27"/>
+        <image name="Bookmark-icon-gray" width="27" height="27"/>
+        <image name="F2L-icon-gray" width="27" height="27"/>
+        <image name="Learn-icon-gray" width="27" height="27"/>
+        <image name="OLL-icon-gray" width="27" height="27"/>
+        <image name="PLL-icon-gray" width="27" height="27"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
