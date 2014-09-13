@@ -8,23 +8,14 @@
 
 #import "SCAppDelegate.h"
 #import "SCLearnViewController.h"
+#import "UIColor+FlatUI.h"
 
 @implementation SCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [[UITabBar appearance] setTintColor:[UIColor blackColor]];
-    [[UITabBar appearance] setSelectedImageTintColor:[UIColor darkGrayColor]];
-    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"white-tabbar-selected.png"]];
-    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"white-tabbar-background.png"]];
-    [[UITabBarItem appearance] setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor colorWithRed:71.0 / 255.0 green:71.0 / 255.0 blue:71.0 / 255.0 alpha:1.0], UITextAttributeTextColor,
-      [UIColor whiteColor], UITextAttributeTextShadowColor,
-      [NSValue valueWithUIOffset:UIOffsetMake(0, 0.4)], UITextAttributeTextShadowOffset,
-      [UIFont fontWithName:@"Rok" size:0.0], UITextAttributeFont,
-      nil]forState:UIControlStateNormal];
+    [[UITabBar appearance] setTintColor:[UIColor peterRiverColor]];
     
     // crazy code. Programmatically trigger viewDidLoad, a very crazy design
     // This create a super super subtle bug in BookMark Controller:
@@ -38,7 +29,7 @@
     
     UITabBarController *root = (UITabBarController *) self.window.rootViewController;
     for (UIViewController *controller in root.viewControllers) {
-        [controller setGrayTabBarItem];
+//        [controller setGrayTabBarItem];
         if ([controller isKindOfClass:[SCLearnViewController class]]){
             [(SCLearnViewController *)controller loadTutorial];
         }

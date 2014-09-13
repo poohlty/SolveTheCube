@@ -40,9 +40,10 @@
 {
     [super viewDidLoad];
     
-    [self.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor darkGrayColor],UITextAttributeTextColor,nil] forState:UIControlStateNormal];
-    
     self.view.backgroundColor = [UIColor colorWithRed:233.0 / 255.0 green:234.0 / 255.0 blue:236.0 / 255.0 alpha:1.0];
+    
+    //TODO: Hacky way to offset status bar height
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f,1.0f , 20.0f)];
         
     algorithmType = self.tabBarItem.title;
     
@@ -68,7 +69,7 @@
     
     [self loadAlgorithms];
     
-    NSLog(@"%u",self.algorithmList.count);
+    NSLog(@"%lu",(unsigned long)self.algorithmList.count);
     NSLog(@"This is%@",algorithmType);
     
     // Uncomment the following line to preserve selection between presentations.

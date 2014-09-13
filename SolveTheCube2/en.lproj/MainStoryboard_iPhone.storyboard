@@ -173,7 +173,6 @@
         <!--Navigation Controller - Bookmark-->
         <scene sceneID="1zh-mq-rZk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aXh-ab-2bq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="nIf-Sc-gqC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Bookmark" image="Bookmark-icon-gray.png" id="MCN-Mt-MLK"/>
                     <toolbarItems/>
@@ -186,6 +185,7 @@
                         <segue destination="C36-mG-EaG" kind="relationship" relationship="rootViewController" id="IUA-g6-Sck"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aXh-ab-2bq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-167" y="-406"/>
         </scene>

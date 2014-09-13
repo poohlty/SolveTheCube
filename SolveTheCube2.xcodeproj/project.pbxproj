@@ -10,6 +10,7 @@
 		AB27925A1738C08000974BED /* Vector Cube copy 3.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2792591738C08000974BED /* Vector Cube copy 3.png */; };
 		AB2C164D1736FFF200EAE717 /* brown-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C164C1736FFF200EAE717 /* brown-bar@2x.png */; };
 		AB2C164F173708BC00EAE717 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C164E173708BC00EAE717 /* placeholder.png */; };
+		AB5351CF19C4C3DB00A64554 /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5351CE19C4C3DB00A64554 /* UIColor+FlatUI.m */; };
 		AB723CEC16CCB6700077F7F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB723CEB16CCB6700077F7F5 /* UIKit.framework */; };
 		AB723CEE16CCB6700077F7F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB723CED16CCB6700077F7F5 /* Foundation.framework */; };
 		AB723CF016CCB6700077F7F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB723CEF16CCB6700077F7F5 /* CoreGraphics.framework */; };
@@ -20,7 +21,6 @@
 		AB723D0216CCB6700077F7F5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB723D0116CCB6700077F7F5 /* Default-568h@2x.png */; };
 		AB723D0516CCB6700077F7F5 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB723D0316CCB6700077F7F5 /* MainStoryboard_iPhone.storyboard */; };
 		AB723D0B16CCB6700077F7F5 /* SCLearnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB723D0A16CCB6700077F7F5 /* SCLearnViewController.m */; };
-		AB723D1E16CCB6700077F7F5 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB723D1D16CCB6700077F7F5 /* SenTestingKit.framework */; };
 		AB723D1F16CCB6700077F7F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB723CEB16CCB6700077F7F5 /* UIKit.framework */; };
 		AB723D2016CCB6700077F7F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB723CED16CCB6700077F7F5 /* Foundation.framework */; };
 		AB723D2816CCB6700077F7F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB723D2616CCB6700077F7F5 /* InfoPlist.strings */; };
@@ -181,6 +181,8 @@
 		AB2792591738C08000974BED /* Vector Cube copy 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Vector Cube copy 3.png"; sourceTree = "<group>"; };
 		AB2C164C1736FFF200EAE717 /* brown-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brown-bar@2x.png"; sourceTree = "<group>"; };
 		AB2C164E173708BC00EAE717 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		AB5351CD19C4C3DB00A64554 /* UIColor+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatUI.h"; sourceTree = "<group>"; };
+		AB5351CE19C4C3DB00A64554 /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
 		AB723CE816CCB6700077F7F5 /* SolveTheCube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SolveTheCube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB723CEB16CCB6700077F7F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AB723CED16CCB6700077F7F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -197,8 +199,7 @@
 		AB723D0416CCB6700077F7F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		AB723D0916CCB6700077F7F5 /* SCLearnViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCLearnViewController.h; sourceTree = "<group>"; };
 		AB723D0A16CCB6700077F7F5 /* SCLearnViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCLearnViewController.m; sourceTree = "<group>"; };
-		AB723D1C16CCB6700077F7F5 /* SolveTheCube2Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SolveTheCube2Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB723D1D16CCB6700077F7F5 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		AB723D1C16CCB6700077F7F5 /* SolveTheCube2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SolveTheCube2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB723D2516CCB6700077F7F5 /* SolveTheCube2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SolveTheCube2Tests-Info.plist"; sourceTree = "<group>"; };
 		AB723D2716CCB6700077F7F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AB723D2916CCB6700077F7F5 /* SolveTheCube2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SolveTheCube2Tests.h; sourceTree = "<group>"; };
@@ -345,7 +346,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB723D1E16CCB6700077F7F5 /* SenTestingKit.framework in Frameworks */,
 				AB723D1F16CCB6700077F7F5 /* UIKit.framework in Frameworks */,
 				AB723D2016CCB6700077F7F5 /* Foundation.framework in Frameworks */,
 			);
@@ -354,14 +354,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB5351D019C4C3E100A64554 /* UIColor+FlatUI */ = {
+			isa = PBXGroup;
+			children = (
+				AB5351CD19C4C3DB00A64554 /* UIColor+FlatUI.h */,
+				AB5351CE19C4C3DB00A64554 /* UIColor+FlatUI.m */,
+			);
+			name = "UIColor+FlatUI";
+			sourceTree = "<group>";
+		};
 		AB723CDF16CCB6700077F7F5 = {
 			isa = PBXGroup;
 			children = (
-				AB2792591738C08000974BED /* Vector Cube copy 3.png */,
-				ABC52C9D173839AA0068B939 /* tutorial.pdf */,
+				AB88BACB1734C139008FC823 /* MCSwipeTableViewCell */,
+				AB5351D019C4C3E100A64554 /* UIColor+FlatUI */,
 				AB88BB691736033D008FC823 /* MBProgressHUD */,
 				AB88BACC1734C216008FC823 /* Images */,
-				AB88BACB1734C139008FC823 /* MCSwipeTableViewCell */,
+				AB2792591738C08000974BED /* Vector Cube copy 3.png */,
+				ABC52C9D173839AA0068B939 /* tutorial.pdf */,
 				AB76A6D616FE70790065622C /* Untitled.png */,
 				ABA66A2116CD977700F2ABE6 /* PLL */,
 				ABA669CE16CD975900F2ABE6 /* OLL */,
@@ -378,7 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				AB723CE816CCB6700077F7F5 /* SolveTheCube.app */,
-				AB723D1C16CCB6700077F7F5 /* SolveTheCube2Tests.octest */,
+				AB723D1C16CCB6700077F7F5 /* SolveTheCube2Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -389,7 +399,6 @@
 				AB723CEB16CCB6700077F7F5 /* UIKit.framework */,
 				AB723CED16CCB6700077F7F5 /* Foundation.framework */,
 				AB723CEF16CCB6700077F7F5 /* CoreGraphics.framework */,
-				AB723D1D16CCB6700077F7F5 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -650,8 +659,8 @@
 			);
 			name = SolveTheCube2Tests;
 			productName = SolveTheCube2Tests;
-			productReference = AB723D1C16CCB6700077F7F5 /* SolveTheCube2Tests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = AB723D1C16CCB6700077F7F5 /* SolveTheCube2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -660,6 +669,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = SC;
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Tianyu Liu";
 			};
@@ -858,6 +868,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB5351CF19C4C3DB00A64554 /* UIColor+FlatUI.m in Sources */,
 				AB88BB08173577CC008FC823 /* MBProgressHUD.m in Sources */,
 				AB88BAE91734CA3B008FC823 /* Algorithm.m in Sources */,
 				AB88BADD1734C22D008FC823 /* MCSwipeTableViewCell.m in Sources */,
@@ -1013,13 +1024,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SolveTheCube2/SolveTheCube2-Prefix.pch";
 				INFOPLIST_FILE = "SolveTheCube2Tests/SolveTheCube2Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1030,13 +1041,13 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SolveTheCube2/SolveTheCube2-Prefix.pch";
 				INFOPLIST_FILE = "SolveTheCube2Tests/SolveTheCube2Tests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

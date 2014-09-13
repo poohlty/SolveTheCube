@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Tianyu Liu. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface SolveTheCube2Tests : SenTestCase
+@interface SolveTheCube2Tests : XCTestCase
 
 @end
