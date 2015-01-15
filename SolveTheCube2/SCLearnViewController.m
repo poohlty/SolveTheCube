@@ -14,12 +14,11 @@
 
 @implementation SCLearnViewController
 
-@synthesize docView;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.docView.backgroundColor = [UIColor whiteColor];
+    [self loadTutorial];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -36,6 +35,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// Hacky solution from http://stackoverflow.com/questions/25813551/rendering-pdf-in-uiwebview-ios-8-causes-a-black-border-around-pdf
+-(void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    // Assuming self.webView is our UIWebView
+    // We go though all sub views of the UIWebView and set their backgroundColor to white
+    UIView *v = self.docView;
+    while (v) {
+        v.backgroundColor = [UIColor whiteColor];
+        v = [v.subviews firstObject];
+    }
 }
 
 @end

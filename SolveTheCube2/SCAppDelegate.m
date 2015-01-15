@@ -27,9 +27,10 @@
     
     // The code is fixed by using a category. Now it's much safer and clearer
     
+    // Async load for tutorial
     UITabBarController *root = (UITabBarController *) self.window.rootViewController;
     for (UIViewController *controller in root.viewControllers) {
-//        [controller setGrayTabBarItem];
+        //[controller setGrayTabBarItem];
         if ([controller isKindOfClass:[SCLearnViewController class]]){
             [(SCLearnViewController *)controller loadTutorial];
         }

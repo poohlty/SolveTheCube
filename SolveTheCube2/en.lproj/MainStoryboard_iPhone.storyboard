@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
-        <deployment defaultVersion="1280" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Learn View Controller - First-->
+        <!--First-->
         <scene sceneID="11">
             <objects>
                 <viewController title="First" id="2" customClass="SCLearnViewController" sceneMemberID="viewController">
@@ -14,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="hX5-43-zjR">
-                                <rect key="frame" x="0.0" y="-24.5" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                         </subviews>
@@ -29,7 +29,7 @@
             </objects>
             <point key="canvasLocation" x="-167" y="983"/>
         </scene>
-        <!--Algorithm View Controller - F2L-->
+        <!--F2L-->
         <scene sceneID="MZk-iC-yyp">
             <objects>
                 <tableViewController id="dbj-TP-d19" customClass="SCAlgorithmViewController" sceneMemberID="viewController">
@@ -88,7 +88,7 @@
             </objects>
             <point key="canvasLocation" x="359" y="-406"/>
         </scene>
-        <!--Algorithm View Controller - PLL-->
+        <!--PLL-->
         <scene sceneID="nLx-Tz-VwY">
             <objects>
                 <tableViewController id="7gn-vj-VRP" customClass="SCAlgorithmViewController" sceneMemberID="viewController">
@@ -117,7 +117,7 @@
             </objects>
             <point key="canvasLocation" x="799" y="1599"/>
         </scene>
-        <!--Algorithm View Controller - OLL-->
+        <!--OLL-->
         <scene sceneID="I30-lR-RNC">
             <objects>
                 <tableViewController id="A28-PO-72H" customClass="SCAlgorithmViewController" sceneMemberID="viewController">
@@ -170,7 +170,7 @@
             </objects>
             <point key="canvasLocation" x="-167" y="273"/>
         </scene>
-        <!--Navigation Controller - Bookmark-->
+        <!--Bookmark-->
         <scene sceneID="1zh-mq-rZk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="nIf-Sc-gqC" sceneMemberID="viewController">

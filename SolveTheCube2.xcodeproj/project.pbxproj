@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AB27925A1738C08000974BED /* Vector Cube copy 3.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2792591738C08000974BED /* Vector Cube copy 3.png */; };
 		AB2C164D1736FFF200EAE717 /* brown-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C164C1736FFF200EAE717 /* brown-bar@2x.png */; };
 		AB2C164F173708BC00EAE717 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2C164E173708BC00EAE717 /* placeholder.png */; };
 		AB5351CF19C4C3DB00A64554 /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5351CE19C4C3DB00A64554 /* UIColor+FlatUI.m */; };
@@ -26,7 +25,6 @@
 		AB723D2016CCB6700077F7F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB723CED16CCB6700077F7F5 /* Foundation.framework */; };
 		AB723D2816CCB6700077F7F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB723D2616CCB6700077F7F5 /* InfoPlist.strings */; };
 		AB723D2B16CCB6700077F7F5 /* SolveTheCube2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB723D2A16CCB6700077F7F5 /* SolveTheCube2Tests.m */; };
-		AB76A6D716FE70790065622C /* Untitled.png in Resources */ = {isa = PBXBuildFile; fileRef = AB76A6D616FE70790065622C /* Untitled.png */; };
 		AB88BA381734BED2008FC823 /* F2L-1.gif in Resources */ = {isa = PBXBuildFile; fileRef = AB88BA221734BED2008FC823 /* F2L-1.gif */; };
 		AB88BA391734BED2008FC823 /* F2L-2.gif in Resources */ = {isa = PBXBuildFile; fileRef = AB88BA231734BED2008FC823 /* F2L-2.gif */; };
 		AB88BA3A1734BED2008FC823 /* F2L-3.gif in Resources */ = {isa = PBXBuildFile; fileRef = AB88BA241734BED2008FC823 /* F2L-3.gif */; };
@@ -155,7 +153,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AB2792591738C08000974BED /* Vector Cube copy 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Vector Cube copy 3.png"; sourceTree = "<group>"; };
 		AB2C164C1736FFF200EAE717 /* brown-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brown-bar@2x.png"; sourceTree = "<group>"; };
 		AB2C164E173708BC00EAE717 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		AB5351CD19C4C3DB00A64554 /* UIColor+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatUI.h"; sourceTree = "<group>"; };
@@ -182,7 +179,6 @@
 		AB723D2716CCB6700077F7F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AB723D2916CCB6700077F7F5 /* SolveTheCube2Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SolveTheCube2Tests.h; sourceTree = "<group>"; };
 		AB723D2A16CCB6700077F7F5 /* SolveTheCube2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SolveTheCube2Tests.m; sourceTree = "<group>"; };
-		AB76A6D616FE70790065622C /* Untitled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Untitled.png; sourceTree = "<group>"; };
 		AB88BA221734BED2008FC823 /* F2L-1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "F2L-1.gif"; sourceTree = "<group>"; };
 		AB88BA231734BED2008FC823 /* F2L-2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "F2L-2.gif"; sourceTree = "<group>"; };
 		AB88BA241734BED2008FC823 /* F2L-3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "F2L-3.gif"; sourceTree = "<group>"; };
@@ -335,9 +331,7 @@
 				AB5351D019C4C3E100A64554 /* UIColor+FlatUI */,
 				AB88BB691736033D008FC823 /* MBProgressHUD */,
 				AB88BACC1734C216008FC823 /* Images */,
-				AB2792591738C08000974BED /* Vector Cube copy 3.png */,
 				ABC52C9D173839AA0068B939 /* tutorial.pdf */,
-				AB76A6D616FE70790065622C /* Untitled.png */,
 				ABA66A2116CD977700F2ABE6 /* PLL */,
 				ABA669CE16CD975900F2ABE6 /* OLL */,
 				ABA669CD16CD967C00F2ABE6 /* F2L */,
@@ -623,6 +617,11 @@
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Tianyu Liu";
+				TargetAttributes = {
+					AB723CE716CCB6700077F7F5 = {
+						DevelopmentTeam = N52ZC865AY;
+					};
+				};
 			};
 			buildConfigurationList = AB723CE316CCB6700077F7F5 /* Build configuration list for PBXProject "SolveTheCube2" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -663,7 +662,6 @@
 				ABA669A016CD81A300F2ABE6 /* F2L.plist in Resources */,
 				ABA66A2016CD977300F2ABE6 /* OLL.plist in Resources */,
 				ABA66A4D16CD980400F2ABE6 /* PLL.plist in Resources */,
-				AB76A6D716FE70790065622C /* Untitled.png in Resources */,
 				AB88BA381734BED2008FC823 /* F2L-1.gif in Resources */,
 				AB88BA391734BED2008FC823 /* F2L-2.gif in Resources */,
 				AB88BA3A1734BED2008FC823 /* F2L-3.gif in Resources */,
@@ -753,7 +751,6 @@
 				AB2C164D1736FFF200EAE717 /* brown-bar@2x.png in Resources */,
 				AB2C164F173708BC00EAE717 /* placeholder.png in Resources */,
 				ABC52C9E173839AA0068B939 /* tutorial.pdf in Resources */,
-				AB27925A1738C08000974BED /* Vector Cube copy 3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,11 +919,16 @@
 		AB723D2F16CCB6700077F7F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SolveTheCube2/SolveTheCube2-Prefix.pch";
 				INFOPLIST_FILE = "SolveTheCube2/SolveTheCube2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = SolveTheCube;
+				PROVISIONING_PROFILE = "66682e33-f584-4902-83cb-5d2eae8b5d3a";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -935,11 +937,16 @@
 		AB723D3016CCB6700077F7F5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SolveTheCube2/SolveTheCube2-Prefix.pch";
 				INFOPLIST_FILE = "SolveTheCube2/SolveTheCube2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = SolveTheCube;
+				PROVISIONING_PROFILE = "66682e33-f584-4902-83cb-5d2eae8b5d3a";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
